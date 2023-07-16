@@ -2,7 +2,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-
 const Home = () => {
 	const [data, setData] = useState([]);
 
@@ -22,11 +21,31 @@ const Home = () => {
 		fetchData();
 	}, []);
 
+	const truncatedText = (string) => {
+		return string.slice(0, 40) + "...";
+	};
 
 	return (
 		<main className="container container-main">
 			{data.map((element) => {
-				return <div key={element.id}>test</div>;
+				return (
+					<div key={element.id} className="tuile">
+						<div className="title-tuile">
+							<p>{truncatedText(element.product_name)}</p>
+						</div>
+						<div className="details-tuile">
+							<div className="container-image-tuile">
+								<img
+									src={element.product_image.secure_url}
+									alt={element.product_name}
+								/>
+							</div>
+							<p className="price">{element.product_price}€</p>
+							<p>{element.product_details[1].TAILLE}</p>
+							<p>{element.product_details[0].MARQUE}</p>
+						</div>
+					</div>
+				);
 			})}
 		</main>
 	);
