@@ -119,7 +119,7 @@ header input {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 5px;
+	gap: 8px;
 }
 
 .tuile {
@@ -141,22 +141,30 @@ header input {
 
 .title-tuile {
 	height: 10%;
-  display:flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
+}
+.title-tuile p {
+	font-size: 1rem;
+	color: black;
+}
+
+.tuile a {
+	text-decoration-line: none;
 }
 
 .details-tuile {
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
+	gap: 10px;
 }
 
-.tuile p {
+.details-tuile p {
+	font-size: 0.8rem;
+	color: grey;
+}
+
+.details-tuile .price {
 	font-size: 0.9rem;
-  color:grey;
-}
-
-.tuile .price {
-  font-size: 1rem;
-  color:black;
+	color: black;
 }

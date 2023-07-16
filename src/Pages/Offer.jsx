@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const Offer = (props) => {
+const Offer = () => {
 	const params = useParams();
-	console.log(params);
+	console.log("params",params);
 
 	return (
 		<>
-			<p>Je suis sur une offre</p>
+			<p>ProductPage je suis une offre s</p>
 			<Link to="/">Aller sur la Home2</Link>
 		</>
 	);
