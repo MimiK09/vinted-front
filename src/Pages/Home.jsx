@@ -14,7 +14,6 @@ const Home = () => {
 				"https://lereacteur-vinted-api.herokuapp.com/offers"
 			);
 			const offers = response.data.offers;
-			console.log("offers", offers);
 			setData(offers);
 			setIsLoading(true);
 		} catch (error) {
@@ -41,12 +40,11 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
-			<main className="container container-main">
+			<main className="container container-home">
 				{data.map((element) => {
-					console.log("element.id", element.id);
 					return (
-						<div key={element.id} className="tuile">
-							<Link to={`/offer/${element.id}`}>
+						<div key={element._id} className="tuile">
+							<Link to={`/offer/${element._id}`}>
 								<div className="title-tuile">
 									<p>{truncatedText(element.product_name)}</p>
 								</div>

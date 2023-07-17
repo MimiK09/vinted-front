@@ -12,7 +12,7 @@ function App() {
 			<Header />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route patch="/offer/:id" element={<Offer />} />
+				<Route path="/offer/:id" element={<Offer />} />
 			</Routes>
 		</Router>
 	);
