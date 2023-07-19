@@ -31,6 +31,7 @@ const Home = () => {
 
 	return isLoading ? (
 		<>
+			<div className="filters">test</div>
 			<div className="hero-banner-container">
 				<img src={imagebanner} alt="faire tri dans placard" />
 				<div className="cadre">
@@ -40,6 +41,7 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
+
 			<main className="container container-home">
 				{data.map((element) => {
 					return (

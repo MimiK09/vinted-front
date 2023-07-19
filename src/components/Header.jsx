@@ -16,8 +16,8 @@ const Header = (props) => {
 				<FontAwesomeIcon icon={faMagnifyingGlass} className="icon"/><input type="text" placeholder="Rechercher des articles"></input>
 				</form>
 				<div className="inscription-connexion">
-					<button>S'inscrire</button>
-					<button>Se connecter</button>
+					<Link to="/signup"><button>S'inscrire</button></Link> 
+					<Link to="/signin"><button>Se connecter</button></Link> 
 				</div>
 				<button>Vends tes articles</button>
 			</div>
