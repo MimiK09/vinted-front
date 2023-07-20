@@ -5,19 +5,25 @@ import Offer from "./Pages/Offer";
 import Header from "./components/Header";
 import Signin from "./Pages/Signin";
 import Signup from "./Pages/Signup";
-// import { useState } from 'react'
+import { useState } from "react";
 
 function App() {
-	// const [isFilters, setIsFilters] = useState();
+	const [isLogged, setIsLogged] = useState(false);
 
 	return (
 		<Router>
-			<Header />
+			<Header isLogged={isLogged} setIsLogged={setIsLogged} />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/offer/:id" element={<Offer />} />
-				<Route path="/signup" element={<Signup />} />
-				<Route path="/signin" element={<Signin />} />
+				<Route
+					path="/signup"
+					element={<Signup isLogged={isLogged} setIsLogged={setIsLogged} />}
+				/>
+				<Route
+					path="/signin"
+					element={<Signin isLogged={isLogged} setIsLogged={setIsLogged} />}
+				/>
 			</Routes>
 		</Router>
 	);
