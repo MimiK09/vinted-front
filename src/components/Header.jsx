@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 import logo from "../assets/logo.svg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 library.add(faMagnifyingGlass);
 
 
-const Header = ({isLogged, setIsLogged}) => {
+const Header = ({ isLogged, setIsLogged }) => {
 	return (
 		<header>
 			<div className="container container-header">
@@ -14,13 +15,31 @@ const Header = ({isLogged, setIsLogged}) => {
 					<img src={logo} alt="logo-vinted" />
 				</Link>
 				<form>
-				<FontAwesomeIcon icon={faMagnifyingGlass} className="icon"/><input type="text" placeholder="Rechercher des articles"></input>
+					<FontAwesomeIcon icon={faMagnifyingGlass} className="icon" />
+					<input type="text" placeholder="Rechercher des articles"></input>
 				</form>
-				{!isLogged ? 
-				<div className="inscription-connexion">
-					<Link to="/signup"><button>S'inscrire</button></Link> 
-					<Link to="/signin"><button>Se connecter</button></Link> 
-				</div> : <div className="inscription-connexion"><button className="inactive" onClick={()=>{setIsLogged("")}}>Se déconnecter</button></div>}
+				{!isLogged ? (
+					<div className="inscription-connexion">
+						<Link to="/signup">
+							<button>S'inscrire</button>
+						</Link>
+						<Link to="/signin">
+							<button>Se connecter</button>
+						</Link>
+					</div>
+				) : (
+					<div className="inscription-connexion">
+						<button
+							className="inactive"
+							onClick={() => {
+								setIsLogged("");
+								Cookies.remove("token")
+							}}
+						>
+							Se déconnecter
+						</button>
+					</div>
+				)}
 				<button>Vends tes articles</button>
 			</div>
 		</header>

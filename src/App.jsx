@@ -6,9 +6,10 @@ import Header from "./components/Header";
 import Signin from "./Pages/Signin";
 import Signup from "./Pages/Signup";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 function App() {
-	const [isLogged, setIsLogged] = useState("");
+	const [isLogged, setIsLogged] = useState(Cookies.get("token")||"");
 
 	return (
 		<Router>
