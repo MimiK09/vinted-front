@@ -9,13 +9,49 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 
 function App() {
-	const [isLogged, setIsLogged] = useState(Cookies.get("token")||"");
+	const [isLogged, setIsLogged] = useState(Cookies.get("token") || "");
+	const [priceMin, setPriceMin] = useState("");
+	const [priceMax, setPriceMax] = useState("");
+	const [priceAsc, setPriceAsc] = useState(false);
+	const [priceDesc, setPriceDesc] = useState(false);
+	const [searchWord, setSearchWord] = useState("");
 
 	return (
 		<Router>
-			<Header isLogged={isLogged} setIsLogged={setIsLogged} />
+			<Header
+				isLogged={isLogged}
+				setIsLogged={setIsLogged}
+				priceMin={priceMin}
+				setPriceMin={setPriceMin}
+				priceMax={priceMax}
+				setPriceMax={setPriceMax}
+				priceAsc={priceAsc}
+				setPriceAsc={setPriceAsc}
+				priceDesc={priceDesc}
+				setPriceDesc={setPriceDesc}
+				searchWord={searchWord}
+				setSearchWord={setSearchWord}
+			/>
 			<Routes>
-				<Route path="/" element={<Home />} />
+				<Route
+					path="/"
+					element={
+						<Home
+							{...{
+								priceMin,
+								setPriceMin,
+								priceMax,
+								setPriceMax,
+								priceAsc,
+								setPriceAsc,
+								priceDesc,
+								setPriceDesc,
+								searchWord,
+								setSearchWord,
+							}}
+						/>
+					}
+				/>
 				<Route path="/offer/:id" element={<Offer />} />
 				<Route
 					path="/signup"

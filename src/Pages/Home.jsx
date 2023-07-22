@@ -4,15 +4,51 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import imagebanner from "../assets/banner-vinted.jpg";
 
-const Home = () => {
+const Home = ({
+	priceMin,
+	setPriceMin,
+	priceMax,
+	setPriceMax,
+	priceAsc,
+	setPriceAsc,
+	priceDesc,
+	setPriceDesc,
+	searchWord,
+	setSearchWord,
+}) => {
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
+	let api = "https://lereacteur-vinted-api.herokuapp.com/offers";
+
+	if (priceMin || priceMax || priceAsc || priceDesc || searchWord) {
+		api = api + `?`;
+	}
+
+	if (searchWord) {
+		api = api + `title=${searchWord}`;
+	}
+
+	if (priceMin) {
+		api = api + `&priceMin=${priceMin}`;
+	}
+
+	if (priceMax) {
+		api = api + `&priceMax=${priceMax}`;
+	}
+
+	if (priceAsc) {
+		api = api + `&sort=price-asc`;
+	}
+
+	if (priceDesc) {
+		api = api + `&sort=price-desc`;
+	}
+
+	console.log("api", api);
 
 	const fetchData = async () => {
 		try {
-			const response = await axios.get(
-				"https://lereacteur-vinted-api.herokuapp.com/offers"
-			);
+			const response = await axios.get(api);
 			const offers = response.data.offers;
 			setData(offers);
 			setIsLoading(true);
@@ -23,7 +59,7 @@ const Home = () => {
 
 	useEffect(() => {
 		fetchData();
-	}, []);
+	}, [priceMin, priceMax, priceAsc, priceDesc, searchWord]);
 
 	const truncatedText = (string) => {
 		return string.slice(0, 30) + "...";
@@ -31,7 +67,6 @@ const Home = () => {
 
 	return isLoading ? (
 		<>
-			<div className="filters">test</div>
 			<div className="hero-banner-container">
 				<img src={imagebanner} alt="faire tri dans placard" />
 				<div className="cadre">
