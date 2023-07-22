@@ -20,7 +20,7 @@ const Header = ({isLogged, setIsLogged}) => {
 				<div className="inscription-connexion">
 					<Link to="/signup"><button>S'inscrire</button></Link> 
 					<Link to="/signin"><button>Se connecter</button></Link> 
-				</div> : <div className="inscription-connexion"><button className="inactive" onClick={()=>{setIsLogged(false)}}>Se déconnecter</button></div>}
+				</div> : <div className="inscription-connexion"><button className="inactive" onClick={()=>{setIsLogged("")}}>Se déconnecter</button></div>}
 				<button>Vends tes articles</button>
 			</div>
 		</header>

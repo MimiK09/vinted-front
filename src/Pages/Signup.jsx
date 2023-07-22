@@ -6,62 +6,41 @@ import Cookies from "js-cookie";
 
 const Signup = (props) => {
 	const { isLogged, setIsLogged } = props;
-	const [data, setData] = useState({});
+	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [ageMajority, setAgeMajority] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 	const navigate = useNavigate();
 
-	const handleChange = (event) => {
-		const newData = { ...data };
-		const name = event.target.name;
-		const value = event.target.value;
-		newData[name] = value;
-		console.log("newdata", newData);
-		setData(newData);
-	};
-
-	const handleCheck = (event) => {
-		const newData = { ...data };
-		const name = event.target.name;
-		const value = event.target.checked;
-		if (value === true) {
-			newData[name] = value;
-		}
-		newData[name] = value;
-		console.log("newdata", newData);
-		setData(newData);
-	};
-
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log("evênement envoyé", data);
-		if (!data.username || !data.email || !data.password) {
+		console.log("evênement envoyé", { username, email, password, ageMajority });
+		if (!username || !email || !password) {
 			setErrorMessage("anomalie");
-		}
-		if (!data.newsletter) {
+		} else if (!ageMajority) {
 			setErrorMessage("anomalie checkbox");
-		}
-
-		try {
-			const response = await axios.post(
-				"https://lereacteur-vinted-api.herokuapp.com/user/signup",
-				data
-			);
-			console.log("réponse serveur", response);
-			const token = response.data.token;
-			console.log("token", token);
-			// Sauvegarde du token dans les cookies
-			Cookies.set("token", token, { expires: 7 });
-			// je réinitialise data
-			setData({
-				username: "",
-				email: "",
-				password: "",
-				newsletter: false,
-			});
-			setIsLogged(true);
-			navigate("/");
-		} catch (error) {
-			console.log(error.response); // contrairement au error.message d'express
+		} else {
+			try {
+				const response = await axios.post(
+					"https://lereacteur-vinted-api.herokuapp.com/user/signup",
+					{ username, email, password, ageMajority }
+				);
+				console.log("réponse serveur", response);
+				const token = response.data.token;
+				console.log("token", token);
+				// Sauvegarde du token dans les cookies
+				Cookies.set("token", token, { expires: 7 });
+				// je réinitialise data
+				setUsername("");
+				setEmail("");
+				setPassword("");
+				setAgeMajority(false);
+				setIsLogged(token);
+				navigate("/");
+			} catch (error) {
+				console.log(error.response); // contrairement au error.message d'express
+			}
 		}
 	};
 
@@ -73,29 +52,38 @@ const Signup = (props) => {
 					type="text"
 					placeholder="username"
 					name="username"
-					onChange={handleChange}
-					value={data.username}
+					onChange={(event) => {
+						setUsername(event.target.value);
+					}}
+					value={username}
 				></input>
 				<input
 					type="email"
 					placeholder="email"
 					name="email"
-					onChange={handleChange}
-					value={data.email}
+					onChange={(event) => {
+						setEmail(event.target.value);
+					}}
+					value={email}
 				></input>
 				<input
 					type="password"
 					placeholder="password"
 					name="password"
-					onChange={handleChange}
-					value={data.password}
+					onChange={(event) => {
+						setPassword(event.target.value);
+					}}
+					value={password}
 				></input>
 				<div>
 					<div>
 						<input
 							type="checkbox"
 							name="newsletter"
-							onClick={handleCheck}
+							onClick={(event) => {
+								setAgeMajority(event.target.checked);
+							}}
+							value={ageMajority}
 						></input>
 					</div>
 					<p>

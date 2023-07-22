@@ -8,7 +8,7 @@ import Signup from "./Pages/Signup";
 import { useState } from "react";
 
 function App() {
-	const [isLogged, setIsLogged] = useState(false);
+	const [isLogged, setIsLogged] = useState("");
 
 	return (
 		<Router>
