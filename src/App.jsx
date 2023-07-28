@@ -7,6 +7,7 @@ import Signin from "./Pages/Signin";
 import Signup from "./Pages/Signup";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import Publish from "./Pages/Publish";
 
 function App() {
 	const [isLogged, setIsLogged] = useState(Cookies.get("token") || "");
@@ -61,6 +62,7 @@ function App() {
 					path="/signin"
 					element={<Signin isLogged={isLogged} setIsLogged={setIsLogged} />}
 				/>
+				<Route path="/publish" element={<Publish isLogged={isLogged} setIsLogged={setIsLogged} />} />
 			</Routes>
 		</Router>
 	);

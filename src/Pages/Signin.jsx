@@ -60,7 +60,11 @@ const Signin = (props) => {
 					value={password}
 				></input>
 				<button>Se connecter</button>
-				{errorMessage ? <div>{errorMessage}</div> : ""}
+				{errorMessage ? (
+					<div className="error-message">{errorMessage}</div>
+				) : (
+					""
+				)}
 			</form>
 
 			<Link to="/signup">

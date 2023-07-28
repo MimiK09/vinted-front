@@ -117,7 +117,9 @@ const Header = ({
 						</button>
 					</div>
 				)}
-				<button>Vends tes articles</button>
+				<Link to="/Publish">
+					<button>Vends tes articles</button>
+				</Link>
 			</div>
 		</header>
 	);
