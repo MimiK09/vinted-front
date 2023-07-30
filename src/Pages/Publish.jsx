@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Publish.css";
 
 const Publish = ({ isLogged, setIsLogged }) => {
-	const [picture, setPicture] = useState({});
+	// const [picture, setPicture] = useState({});
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [brand, setBrand] = useState("");
@@ -16,7 +16,26 @@ const Publish = ({ isLogged, setIsLogged }) => {
 	const [exchange, setExchange] = useState(false);
 	const [errorSubmit, setErrorSubmit] = useState(false);
 
+	// PLUSIEURS IMAGES
+	const [picture, setPicture] = useState([]);
+	const handleImageChange = (event) => {
+		const uploadedPictures = event.target.files;
+		const newPictures = [...picture];
+		for (let i = 0; i < uploadedPictures.length; i++) {
+			newPictures.push(uploadedPictures[i]);
+			console.log(
+				"je suis dans la boucle for ->",
+				" itération",
+				i,
+				" compo",
+				newPictures
+			);
+		}
+		setPicture(newPictures);
+	};
+
 	const handleSubmit = async (event) => {
+		console.log("picture", picture);
 		event.preventDefault();
 		if (
 			title &&
@@ -35,11 +54,14 @@ const Publish = ({ isLogged, setIsLogged }) => {
 				formData.append("title", title);
 				formData.append("description", description);
 				formData.append("price", price);
+				formData.append("brand", brand);
 				formData.append("condition", condition);
 				formData.append("city", place);
 				formData.append("size", size);
 				formData.append("color", color);
-				formData.append("picture", picture);
+				for (let i = 0; i < picture.length; i++) {
+					formData.append("picture", picture[i]);
+				}
 				console.log("formData", formData);
 				const sentData = await axios.post(
 					"https://lereacteur-vinted-api.herokuapp.com/offer/publish",
@@ -71,12 +93,11 @@ const Publish = ({ isLogged, setIsLogged }) => {
 							<label htmlFor="offerPicture">Ajoute une photo</label>
 							<input
 								type="file"
+								multiple
 								name="offerPicture"
 								id="offerPicture"
 								placeholder="Uploader l'image"
-								onChange={(event) => {
-									setPicture(event.target.files[0]);
-								}}
+								onChange={handleImageChange}
 							/>
 						</div>
 					</div>
