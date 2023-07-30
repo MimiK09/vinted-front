@@ -1,11 +1,18 @@
+import "./Offer.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+library.add(faSpinner);
 
-const Offer = () => {
+
+const Offer = ({ isLogged, setIsLogged }) => {
 	const params = useParams();
 	console.log("params", params);
+	const navigate = useNavigate();
 
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +23,6 @@ const Offer = () => {
 				`https://lereacteur-vinted-api.herokuapp.com/offer/${params.id}`
 			);
 			const offre = response.data;
-			console.log("offre individuelle", response.data);
 			setData(offre);
 			setIsLoading(true);
 		} catch (error) {
@@ -27,6 +33,14 @@ const Offer = () => {
 	useEffect(() => {
 		fetchData();
 	}, []);
+
+	const handlePay = (id_offre) => {
+		if (isLogged) {
+			navigate(`/payment/${id_offre}`);
+		} else {
+			navigate(`/signin`);
+		}
+	};
 
 	return isLoading ? (
 		<main className="offer-container">
@@ -94,12 +108,12 @@ const Offer = () => {
 							<p>{data.owner.account.username}</p>
 						</div>
 					</div>
-					<button>Acheter</button>
+					<button onClick={() => handlePay(data._id)}>Acheter</button>
 				</div>
 			</div>
 		</main>
 	) : (
-		<div>En cours de chargement</div>
+		<div className="charging-element"><FontAwesomeIcon icon={faSpinner} /><p>En cours de chargement</p></div>
 	);
 };
 

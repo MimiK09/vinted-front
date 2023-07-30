@@ -1,8 +1,13 @@
 // import { Link } from "react-router-dom";
+import "./Home.css"
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import imagebanner from "../assets/banner-vinted.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+library.add(faSpinner);
 
 const Home = ({
 	priceMin,
@@ -103,7 +108,10 @@ const Home = ({
 			</main>
 		</>
 	) : (
-		<div>en cours de chargement</div>
+		<div className="charging-element">
+			<FontAwesomeIcon icon={faSpinner} />
+			<p>En cours de chargement</p>
+		</div>
 	);
 };
 

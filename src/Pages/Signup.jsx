@@ -95,7 +95,7 @@ const Signup = (props) => {
 					</p></div>
 				</div>
 				<button>S'inscrire</button>
-				{errorMessage ? <div>{errorMessage}</div> : ""}
+				{errorMessage ? <div className="error-message"><p>{errorMessage}</p></div> : ""}
 			</form>
 
 			<Link to="/signin">

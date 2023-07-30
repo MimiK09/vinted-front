@@ -62,7 +62,7 @@ const Signin = (props) => {
 				></input>
 				<button>Se connecter</button>
 				{errorMessage ? (
-					<div className="error-message">{errorMessage}</div>
+					<div className="error-message"><p>{errorMessage}</p></div>
 				) : (
 					""
 				)}

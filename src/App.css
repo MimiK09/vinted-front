@@ -27,12 +27,12 @@ button {
 	padding: 10px 20px;
 }
 
-h1{
+h1 {
 	font-size: 1.8rem;
 	padding: 10px;
 }
 
-h2{
+h2 {
 	font-size: 1.5rem;
 	padding: 10px;
 }
@@ -46,257 +46,32 @@ h2{
 	margin: 0 auto;
 }
 
-/************/
-/** HEADER **/
-/************/
-
-.container-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 20px;
-}
-
-.inscription-connexion {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 10px;
-}
-
-header .inscription-connexion button {
-	color: #017580;
-	background-color: #ffffff;
-	border: 1px solid #017580;
-	border-radius: 5px;
-	padding: 10px 20px;
-}
-header .searchBar {
-	display: flex;
-	align-items: center;
-	height: 30px;
-	min-width: 300px;
-	background-color: rgb(228, 228, 228);
-	border-radius: 5px;
-}
-
-header .searchBar input {
-	background-color: rgb(228, 228, 228);
-	border: none;
-}
-
-header .icon {
-	font-size: 20px;
-	background-color: rgb(228, 228, 228);
-	color: rgb(146, 146, 146);
-	margin: 0px 10px;
-}
-
-header form {
-	display: flex;
-	flex-direction: column;
-	gap:10px;
-margin:10px 0;
-}
-
-header form .filter-sort-prices {
-	gap:30px;
-}
-
-header form .sort-by {
-	display: flex;
-	justify-content: space-between;
-}
-
-header form p {font-size: 0.8rem;
-
-}
-header form .sort-by > div {
-	display: flex;
-	align-items: center;
-
-}
-
-header form .filters {
-	display:flex;
-	justify-content: space-between;
-	gap:20px;
-}
 
 
 /************/
-/** HERO **/
+/** ERROR et CHARGING **/
 /************/
 
-.hero-banner-container {
-	overflow: hidden;
-	height: 400px;
-	position: relative;
-}
-
-.hero-banner-container img {
-	object-fit: cover;
+.error-message {
 	width: 100%;
-	height: 100%;
-}
-
-.hero-banner-container .cadre {
-	position: absolute;
-	background-color: #ffffff;
-	left: 30px;
-	top: 10%;
-	height: 80%;
-	max-width: 384px;
-	border-radius: 2px;
-}
-
-.hero-banner-container .cadre > div {
-	height: 90%;
-	width: 90%;
-	margin: 10px auto;
 	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-}
-
-.hero-banner-container .cadre p {
-	font-size: 2.4rem;
-}
-
-.hero-banner-container .cadre button {
-	font-size: 1rem;
-}
-
-/************/
-/** MAIN HOME **/
-/************/
-
-.container-home {
-	margin: 30px auto;
-	display: flex;
-	flex-wrap: wrap;
 	justify-content: center;
-	gap: 8px;
 }
 
-.tuile {
-	width: 15%;
-	height: 400px;
+.error-message p {
+	font-size: 1.1rem;
+	color: #b62a2a;
+	font-weight: bold;
 }
 
-.container-image-tuile {
-	overflow: hidden;
+.charging-element {
 	width: 100%;
-	height: 250px;
-}
-
-.container-image-tuile img {
-	object-fit: cover;
-	width: 100%;
-	height: 100%;
-}
-
-.title-tuile {
-	height: 10%;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 }
-.title-tuile p {
-	font-size: 1rem;
-	color: black;
-}
 
-.tuile a {
-	text-decoration-line: none;
-}
-
-.details-tuile {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-.details-tuile p {
-	font-size: 0.8rem;
-	color: grey;
-}
-
-.details-tuile .price {
-	font-size: 0.9rem;
-	color: black;
-}
-
-/************/
-/** MAIN OFFER **/
-/************/
-
-.offer-container {
-	padding: 100px;
-	display: flex;
-	justify-content: space-evenly;
-	flex-direction: row;
-	background-color: lightgrey;
-	gap: 20px;
-}
-
-.offer-container p {
-	font-size: 0.9rem;
-}
-
-.offer-container .price,
-.offer-container .name {
+.charging-element p {
 	font-size: 1.1rem;
-	padding: 10px 0;
+	font-weight: bold;
 }
-
-.offer-container > div {
-	width: 400px;
-	height: 500px;
-	overflow: hidden;
-}
-
-.offer-description-container {
-	background-color: #ffffff;
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-}
-
-.offer-description {
-	margin: 20px;
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
-	gap: 20px;
-	height: 100%;
-}
-
-.offer-container-image img {
-	object-fit: cover;
-	width: 100%;
-	height: 100%;
-}
-
-.offer-description-details {
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
-}
-
-.offer-description-details > div {
-	display: flex;
-}
-
-.offer-description-details > div > :nth-child(odd) {
-	width: 140px;
-	color: grey;
-}
-
-.separator {
-	border: 1px solid grey;
-}
-
-
-/************/
-/** SIGNIN SIGNUP **/
-/************/

@@ -8,6 +8,7 @@ import Signup from "./Pages/Signup";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import Publish from "./Pages/Publish";
+import Payment from "./Pages/Payment";
 
 function App() {
 	const [isLogged, setIsLogged] = useState(Cookies.get("token") || "");
@@ -53,7 +54,10 @@ function App() {
 						/>
 					}
 				/>
-				<Route path="/offer/:id" element={<Offer />} />
+				<Route
+					path="/offer/:id"
+					element={<Offer isLogged={isLogged} setIsLogged={setIsLogged} />}
+				/>
 				<Route
 					path="/signup"
 					element={<Signup isLogged={isLogged} setIsLogged={setIsLogged} />}
@@ -62,10 +66,16 @@ function App() {
 					path="/signin"
 					element={<Signin isLogged={isLogged} setIsLogged={setIsLogged} />}
 				/>
-				<Route path="/publish" element={<Publish isLogged={isLogged} setIsLogged={setIsLogged} />} />
+				<Route
+					path="/publish"
+					element={<Publish isLogged={isLogged} setIsLogged={setIsLogged} />}
+				/>
+				<Route
+					path="/payment/:id"
+					element={<Payment isLogged={isLogged} setIsLogged={setIsLogged} />}
+				/>
 			</Routes>
 		</Router>
 	);
 }
-
 export default App;
