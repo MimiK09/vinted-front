@@ -23,7 +23,7 @@ const CheckoutForm = ({ price, isLogged, name }) => {
 			{
 				token: stripeToken,
 				title: name,
-				amount: price,
+				amount: price*100,
 			}
 		);
 		console.log("response.data", response.data);
