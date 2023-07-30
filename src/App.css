@@ -27,6 +27,16 @@ button {
 	padding: 10px 20px;
 }
 
+h1{
+	font-size: 1.8rem;
+	padding: 10px;
+}
+
+h2{
+	font-size: 1.5rem;
+	padding: 10px;
+}
+
 /************/
 /** GENERAL **/
 /************/
@@ -285,3 +295,8 @@ header form .filters {
 .separator {
 	border: 1px solid grey;
 }
+
+
+/************/
+/** SIGNIN SIGNUP **/
+/************/

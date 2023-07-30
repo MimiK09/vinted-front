@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import "./Sign-in-up.css";
 
 const Signup = (props) => {
 	const { isLogged, setIsLogged } = props;
@@ -45,8 +46,8 @@ const Signup = (props) => {
 	};
 
 	return (
-		<main>
-			<p>S'inscrire</p>
+		<main className="container signinup-container">
+			<h2>S'inscrire</h2>
 			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
@@ -75,7 +76,7 @@ const Signup = (props) => {
 					}}
 					value={password}
 				></input>
-				<div>
+				<div className="signinup-checkbox">
 					<div>
 						<input
 							type="checkbox"
@@ -86,11 +87,12 @@ const Signup = (props) => {
 							value={ageMajority}
 						></input>
 					</div>
+					<div>
 					<p>
 						En m'inscrivant, je confirme avoir lu et accepté les termes et
 						conditions de confidentialité sur Vinted. Je confirme avoir au moins
 						18 ans.
-					</p>
+					</p></div>
 				</div>
 				<button>S'inscrire</button>
 				{errorMessage ? <div>{errorMessage}</div> : ""}

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import "./Sign-in-up.css";
 
 const Signin = (props) => {
 	const { isLogged, setIsLogged } = props;
@@ -38,8 +39,8 @@ const Signin = (props) => {
 	};
 
 	return (
-		<main>
-			<p>Se connecter</p>
+		<main className="container signinup-container">
+			<h2>Se connecter</h2>
 			<form onSubmit={handleSubmit}>
 				<input
 					type="email"
