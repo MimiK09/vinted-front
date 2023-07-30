@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 
-const CheckoutForm = ({ price, isLogged, name }) => {
+const CheckoutForm = ({ price, isLogged, boughtItemName, boughtItemId}) => {
 	const stripe = useStripe();
 	const elements = useElements();
 	const [completed, setCompleted] = useState(false);
@@ -13,17 +13,18 @@ const CheckoutForm = ({ price, isLogged, name }) => {
 
 		// j'envoi le token qui permettra ensuite d'identifier l'acheteur
 		const stripeResponse = await stripe.createToken(cardElement, {
-			name: isLogged,
+			name: boughtItemName,
 		});
 
-		console.log("stripe response", stripeResponse);
 		const stripeToken = stripeResponse.token.id;
 		const response = await axios.post(
 			"https://lereacteur-vinted-api.herokuapp.com/payment",
 			{
 				token: stripeToken,
-				title: name,
+				title: boughtItemName,
 				amount: price*100,
+				offer_id : boughtItemId,
+				user_token : isLogged,
 			}
 		);
 		console.log("response.data", response.data);

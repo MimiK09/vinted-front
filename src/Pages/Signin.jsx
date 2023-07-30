@@ -22,9 +22,7 @@ const Signin = (props) => {
 					"https://lereacteur-vinted-api.herokuapp.com/user/login",
 					{ email, password }
 				);
-				console.log("réponse serveur", response);
 				const token = response.data.token;
-				console.log("token", token);
 				// Sauvegarde du token dans les cookies
 				Cookies.set("token", token, { expires: 7 });
 				// je réinitialise data

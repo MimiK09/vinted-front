@@ -13,7 +13,8 @@ const stripePromise = loadStripe(
 const Payment = ({isLogged, setIsLogged}) => {
 	const params = useParams();
 	const [price, setPrice] = useState("");
-    const [name, setName] = useState("");
+    const [boughtItemId, setBoughtItemId] = useState("");
+	const [boughtItemName, setBoughtItemName] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 
 	const fetchData = async () => {
@@ -22,9 +23,11 @@ const Payment = ({isLogged, setIsLogged}) => {
 				`https://lereacteur-vinted-api.herokuapp.com/offer/${params.id}`
 			);
 			const priceToPay = response.data.product_price;
-            const nameToPay = response.data.product_name;
+			const boughtName = response.data.product_name;
+            const boughtID = response.data._id;
 			setPrice(priceToPay);
-            setName(nameToPay);
+            setBoughtItemId(boughtID);
+			setBoughtItemName(boughtName)
 			setIsLoading(true);
 		} catch (error) {
 			console.log(error.response); // contrairement au error.message d'express
@@ -40,7 +43,7 @@ const Payment = ({isLogged, setIsLogged}) => {
 			{isLoading ? (
 				<div>
 					<Elements stripe={stripePromise}>
-						<CheckoutForm price={price} isLogged={isLogged} name={name}/>
+						<CheckoutForm price={price} isLogged={isLogged} boughtItemId={boughtItemId} boughtItemName={boughtItemName}/>
 					</Elements>
 				</div>
 			) : (
