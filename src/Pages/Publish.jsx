@@ -64,7 +64,7 @@ const Publish = ({ isLogged, setIsLogged }) => {
 				}
 				console.log("formData", formData);
 				const sentData = await axios.post(
-					"https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+					"http://localhost:3000/offer/publish",
 					formData,
 					{
 						headers: {

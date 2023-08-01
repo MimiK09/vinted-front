@@ -20,7 +20,7 @@ const Payment = ({isLogged, setIsLogged}) => {
 	const fetchData = async () => {
 		try {
 			const response = await axios.get(
-				`https://lereacteur-vinted-api.herokuapp.com/offer/${params.id}`
+				`http://localhost:3000/offer/${params.id}`
 			);
 			const priceToPay = response.data.product_price;
 			const boughtName = response.data.product_name;

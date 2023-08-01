@@ -23,7 +23,7 @@ const Home = ({
 }) => {
 	const [data, setData] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
-	let api = "https://lereacteur-vinted-api.herokuapp.com/offers";
+	let api = "http://localhost:3000/offers";
 
 	if (priceMin || priceMax || priceAsc || priceDesc || searchWord) {
 		api = api + `?`;
@@ -55,6 +55,7 @@ const Home = ({
 		try {
 			const response = await axios.get(api);
 			const offers = response.data.offers;
+			console.log("offers", offers)
 			setData(offers);
 			setIsLoading(true);
 		} catch (error) {
@@ -93,7 +94,7 @@ const Home = ({
 								<div className="details-tuile">
 									<div className="container-image-tuile">
 										<img
-											src={element.product_image.secure_url}
+											src={element.product_image}
 											alt={element.product_name}
 										/>
 									</div>

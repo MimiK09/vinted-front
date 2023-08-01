@@ -20,7 +20,7 @@ const Offer = ({ isLogged, setIsLogged }) => {
 	const fetchData = async () => {
 		try {
 			const response = await axios.get(
-				`https://lereacteur-vinted-api.herokuapp.com/offer/${params.id}`
+				`http://localhost:3000/offer/${params.id}`
 			);
 			const offre = response.data;
 			setData(offre);
@@ -47,7 +47,7 @@ const Offer = ({ isLogged, setIsLogged }) => {
 			<div className="offer-carroussel-image">
 				<div className="offer-container-image">
 					<img
-						src={data.product_pictures[0].secure_url}
+						src={data.product_pictures[0]}
 						alt={data.product_name}
 					/>
 				</div>

@@ -24,7 +24,7 @@ const Signup = (props) => {
 		} else {
 			try {
 				const response = await axios.post(
-					"https://lereacteur-vinted-api.herokuapp.com/user/signup",
+					"http://localhost:3000/user/signup",
 					{ username, email, password, ageMajority }
 				);
 				const token = response.data.token;
